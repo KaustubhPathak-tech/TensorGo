@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <script>
+    //Set your APP_ID
+    var APP_ID = "bci035u3";
+    (function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', w.intercomSettings); } else { var d = document; var i = function () { i.c(arguments); }; i.q = []; i.c = function (args) { i.q.push(args); }; w.Intercom = i; var l = function () { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/' + APP_ID; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (document.readyState === 'complete') { l(); } else if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();
+  </script>
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"> </div>
+  <br>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <h1> Configure the Intercom Messenger</h1>
+          <pre>
+  This interactive Codepen example will allow you to try out the different configuraiton
+  options which are available for the Intercom Messenger. Try them out and see what suits 
+  your use case of a particular web page on your site. Feel free to use our default test 
+  App ID provided or simply insert your own. Either way we want you to be able to get a 
+  feel for the Messenger and how it will help you communicate with your customers.
+  If you want to know more about Codepen then this <a ref="https://blog.codepen.io/documentation/views/editor-view/">Codepen editor doc</a> will help </pre>
+
+          <h2> Install Intercom to get started <span class="checkmark">
+              <div class="checkmark_stem"></div>
+              <div class="checkmark_kick"></div>
+            </span></h2>
+          <pre>
+  For this example we will use the install format for a basic JavaScript layout. This
+  is where your site will have multiple pages characterised by regular page refreshes.
+  You can refer back to our install options page if you want more info on how to 
+  install Intercom on your site. 
+  The important thing here is that you are familiar with
+  the different configuration option available. You can then choose what is best for your
+  particular setup. 
+  Copy the code you see when toggling the link below and paste it where you see "Insert
+  Intercom basic JS code here" in the JS Editor in the upper right of your screen</pre>
+
+          <a href="javascript:toggle('non-minified')">Basic JavaScript Install Code </a>
+          <div id="non-minified" style="display: none;">
+            <pre>
+                        <script>      //Set your APP_ID or use our test app "fyq3wodw"
+                          var APP_ID = "bci035u3";
+
+                          window.intercomSettings = {
+                            app_id: APP_ID
+                          };
+                          (function () {
+                            var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else {
+                              var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() {
+                                var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true;
+                                s.src = 'https://widget.intercom.io/widget/' + APP_ID;
+                                var x = d.getElementsByTagName('script')
+                                [0]; x.parentNode.insertBefore(s, x);
+                              } if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); }
+                            }
+                          })()
+                        </script>
+
+  </pre>
+          </div>
+
+          <a href="javascript:toggle('visitorCode')">
+            <h2>Troubleshooting: Did you change the APP_ID?</h2>
+          </a>
+          <div id="visitorCode" style="display: none;">
+            <pre>
+   You need to specify an App ID in the JS library code. If you do not it will not work. 
+   You can use our test app ID "fyq3wodw" or provide your own (note if you have secure
+   mode enabled you will need to use the test app for this example to work). When you
+   copy and paste the code into the JS editor replace APP_ID with either fyq3wodw or
+   your own App ID
+  </pre>
+          </div>
+          <h2> Show Messenger </h2>
+          <pre>
+  This will show the Messenger. If there are no conversations it will open with the 
+  new message view, if there are it will open with the message list. 
+  </pre>
+
+          <a href="javascript:toggle('showcode')">Show Messenger Code</a><br>
+          <div id="showcode" style="display: none;">
+            <pre>
+  Intercom('show');
+  </pre>
+          </div>
+          <button onclick="messenger('show')">Show </button>
+          <p id="display"></p>
+          <h2> Show message window </h2>
+          <pre>
+  To open the message window with the message list you can call. 
+  </pre>
+
+          <a href="javascript:toggle('msgwindow')">Message Window Code</a>
+          <div id="msgwindow" style="display: none;">
+
+            <pre>
+  Intercom('showMessages')
+  </pre>
+          </div> <br>
+          <button onclick="messenger('showMessages')">Show Messages</button>
+          <p id="display"></p>
+          <div id="showevent"></div>
+
+
+          <h2> Show new message window </h2>
+          <pre>
+  This will show the Messenger. If there are no conversations it will open with the 
+  new message view, if there are it will open with the message list. 
+  </pre>
+
+          <a href="javascript:toggle('newmsgwindow')">New Message Window Code</a>
+          <div id="newmsgwindow" style="display: none;">
+
+            <pre>
+  Intercom('showNewMessage')
+  </pre>
+          </div> <br>
+          <button onclick="messenger('showNewMessage')">Show New Messages</button>
+          <p id="display"></p>
+
+          <h2> Hide the Messenger</h2>
+          <pre>
+  This will hide the Messenger. 
+  </pre>
+
+          <a href="javascript:toggle('hidecode')">Hide Messenger Code</a>
+          <div id="hidecode" style="display: none;">
+            <pre>
+  Intercom('hide')
+  </pre>
+          </div><br>
+          <button onclick="messenger('hide')">Hide Messenger</button>
+          <p id="display"></p>
+
+          <h2> Take action when Messenger shows </h2>
+          <pre>
+  Gives you the ability to hook into the show event. Requires a function argument. 
+  </pre>
+
+          <a href="javascript:toggle('showaction')">Show Action Code</a>
+          <div id="showaction" style="display: none;">
+            <pre>
+  Intercom('onShow', function() { // Do stuff });
+  </pre>
+          </div><br>
+          Trigger Event on Show?: <input type="checkbox" id="myCheck" title="box">
+
+          <button onclick="check()">Check Checkbox</button>
+          <button onclick="uncheck()">Uncheck Checkbox</button>
+
+          <h2> Take action on unread count change </h2>
+          <pre>
+  This method allows you to register a function that will be called when the current
+  number of unread messages changes.  
+  </pre>
+
+          <a href="javascript:toggle('unreadaction')">Unread Count Action Code</a>
+          <div id="unreadaction" style="display: none;">
+            <pre>
+  Intercom('onUnreadCountChange', function(unreadCount) {
+    // Do stuff...
+  });
+  </pre>
+          </div>
+
+          <h2> Take action on hide </h2>
+          <pre>
+  Gives you the ability to hook into the hide event. Requires a function argument. 
+  </pre>
+
+          <a href="javascript:toggle('hideaction')">Hide Action Code</a>
+          <div id="hideaction" style="display: none;">
+            <pre>
+  Intercom('onHide', function() { // Do stuff });
+  </pre>
+          </div>
+
+
+
+          <h2> Next Step: Configure the Messenger </h2>
+          <pre>
+  You should now have the Messenger up on running on the page. So you can test it out
+  and interact with it to send some messages. After that you might want to go through
+  the options you have to configrue the Messenger. For example, the different display 
+  modes or how you can hide and customize it. check out our configure doc for more 
+  info.
+                </pre>
+          <script>
+            //Insert Basic JS code here
+            //Set your APP_ID
+            var APP_ID = "bci035u3";
+
+            // Set Show Event to be false initiall
+            var SHOW_EVENT = false;
+
+            window.intercomSettings = {
+              app_id: APP_ID
+              
+            };
+            (function () {
+              var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else {
+                var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() {
+                  var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true;
+                  s.src = 'https://widget.intercom.io/widget/' + APP_ID;
+                  var x = d.getElementsByTagName('script')
+                  [0]; x.parentNode.insertBefore(s, x);
+                } if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); }
+              }
+            })()
+
+
+            function messenger(display) {
+              //Insert sign out code here
+              Intercom(display)
+              return (true) //check to see if code was correctly copied
+            }
+
+
+
+
+
+
+
+
+
+
+
+            // The code below here is only related to the demo
+            // i.e. it has nothing to do with installing Intercom
+
+            // Code to show snippet code on toggle
+            function toggle(element) {
+              document.getElementById(element).style.display = (document.getElementById(element).style.display == "none") ? "" : "none";
+            }
+
+            //Code to check that launcher is loading
+            var retries = 0;
+            var launcherExist = setInterval(function () {
+              if ($('.intercom-launcher-frame').length) {
+                $('.checkmark').css({ 'display': 'inline-block' });
+                $('.still-no-messenger').hide();
+                clearInterval(launcherExist);
+              }
+              retries += 1;
+              if (retries >= 120) {
+                clearInterval(launcherExist);
+              }
+            }, 500);
+
+            $('#myCheck').click(function () {
+              if ($('#display').is(":visbile")) {
+                $('#display').hide();
+              } else {
+                $('#display').show();
+              }
+            }); 
+          </script>
+</body>
+
+</html>
